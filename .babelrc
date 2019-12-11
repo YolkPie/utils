@@ -1,0 +1,13 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": ["last 20 versions", ">0.2%"]
+      }
+    }]
+  ],
+  "plugins": ["@babel/plugin-external-helpers", "@babel/plugin-transform-runtime"],
+  "ignore": [
+    "node_modules/**"
+  ]
+}

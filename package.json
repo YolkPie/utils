@@ -1,0 +1,58 @@
+{
+  "name": "@yolkpie/utils",
+  "version": "1.0.0",
+  "description": "Javascript Utilities",
+  "main": "dist/utils.cjs.js",
+  "module": "dist/utils.esm.js",
+  "browser": "dist/utils.umd.js",
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "standard && cross-env NODE_ENV=production rollup -c",
+    "test": "standard && node test/test.js",
+    "pretest": "npm run build",
+    "fix": "standard --fix"
+  },
+  "repository": "https://github.com/YolkPie/utils.git",
+  "keywords": [
+    "tools",
+    "javascript",
+    "library",
+    "utils"
+  ],
+  "author": "yujihu",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-external-helpers": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.5",
+    "@babel/preset-env": "^7.7.5",
+    "core-js": "^3.4.7",
+    "cross-env": "^6.0.3",
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.1.0",
+    "rollup": "^1.27.8",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "standard": "^14.3.1",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "standard": {
+    "ignore": [
+      "/dist/"
+    ]
+  }
+}
