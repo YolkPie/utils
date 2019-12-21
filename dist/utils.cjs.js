@@ -1344,6 +1344,25 @@ function jsonpAdapter (config) {
   })
 }
 
+/**
+ * @fileOverview 移动端适配
+ * @module rem
+ */
+var rem = ((doc, win) => {
+  const docEl = doc.documentElement;
+  const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+  function recalc () {
+    const designWidth = 750;
+    const clientWidth = docEl.clientWidth || window.screen.width;
+    if (!clientWidth) return
+    docEl.style.fontSize = (100 * clientWidth) / designWidth + 'px';
+  }
+  return function () {
+    recalc();
+    win.addEventListener && win.addEventListener(resizeEvt, recalc, false);
+  }
+})(document, window);
+
 exports.add = add;
 exports.addClass = addClass;
 exports.bottomVisible = bottomVisible;
@@ -1382,6 +1401,7 @@ exports.objectToObjArray = objectToObjArray;
 exports.off = off;
 exports.on = on;
 exports.pick = pick;
+exports.rem = rem;
 exports.removeClass = removeClass;
 exports.scm = scm;
 exports.scrollTo = scrollTo;

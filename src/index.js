@@ -49,6 +49,7 @@ import {
 } from './utils/functional'
 import { throttle, debounce } from './utils/tools'
 import jsonpAdapter from './utils/axios-jsonp'
+import rem from './utils/rem'
 
 export {
   getCookie,
@@ -101,5 +102,6 @@ export {
   curry,
   throttle,
   debounce,
-  jsonpAdapter
+  jsonpAdapter,
+  rem
 }

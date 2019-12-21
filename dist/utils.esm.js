@@ -1340,4 +1340,23 @@ function jsonpAdapter (config) {
   })
 }
 
-export { add, addClass, bottomVisible, cache, compose, copy, curry, debounce, deepCopy, delCookie, divide, elementIsVisibleInViewport, formatDate, formatNum, gcd, getCookie, getDevice, getEnv, getGbLen, getHash, getKeyByVal, getQuery, getType, getValByVal, hasClass, isArrayLike, isIphoneX, isSupportWebp, jsonpAdapter, listToHash, listener, lockMaskScroll, mixParams, multiply, objectToObjArray, off, on, pick, removeClass, scm, scrollTo, scrollToTop, setCookie, subGbString, subtract, throttle, toFixed, trimAll, trimLandR, trimLeft, trimRight };
+/**
+ * @fileOverview 移动端适配
+ * @module rem
+ */
+var rem = ((doc, win) => {
+  const docEl = doc.documentElement;
+  const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+  function recalc () {
+    const designWidth = 750;
+    const clientWidth = docEl.clientWidth || window.screen.width;
+    if (!clientWidth) return
+    docEl.style.fontSize = (100 * clientWidth) / designWidth + 'px';
+  }
+  return function () {
+    recalc();
+    win.addEventListener && win.addEventListener(resizeEvt, recalc, false);
+  }
+})(document, window);
+
+export { add, addClass, bottomVisible, cache, compose, copy, curry, debounce, deepCopy, delCookie, divide, elementIsVisibleInViewport, formatDate, formatNum, gcd, getCookie, getDevice, getEnv, getGbLen, getHash, getKeyByVal, getQuery, getType, getValByVal, hasClass, isArrayLike, isIphoneX, isSupportWebp, jsonpAdapter, listToHash, listener, lockMaskScroll, mixParams, multiply, objectToObjArray, off, on, pick, rem, removeClass, scm, scrollTo, scrollToTop, setCookie, subGbString, subtract, throttle, toFixed, trimAll, trimLandR, trimLeft, trimRight };
