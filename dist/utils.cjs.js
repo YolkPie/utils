@@ -1267,6 +1267,9 @@ function jsonpAdapter (config) {
   return new Promise(function (resolve, reject) {
     let script = document.createElement('script');
     let src = config.url;
+    if (!/^([a-z][a-z\d\\+\-\\.]*:)?\/\//i.test(src)) {
+      src = config.baseURL + src;
+    }
 
     if (config.params) {
       const params = buildParams(config.params);
