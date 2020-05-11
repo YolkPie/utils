@@ -19,9 +19,6 @@
     "library",
     "utils"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "author": "yujihu",
   "license": "MIT",
   "dependencies": {},
