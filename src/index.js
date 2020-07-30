@@ -18,7 +18,8 @@ import {
   copy,
   scrollToTop,
   scrollTo,
-  lockMaskScroll
+  lockMaskScroll,
+  closest
 } from './utils/dom'
 import { toFixed, formatNum, gcd, scm } from './utils/math'
 import {
@@ -47,9 +48,10 @@ import {
   compose,
   curry
 } from './utils/functional'
-import { throttle, debounce } from './utils/tools'
+import { throttle, debounce, handleImgError } from './utils/tools'
 import jsonpAdapter from './utils/axios-jsonp'
 import rem from './utils/rem'
+import fixMask from './utils/fixMask'
 
 export {
   getCookie,
@@ -73,6 +75,7 @@ export {
   scrollToTop,
   scrollTo,
   lockMaskScroll,
+  closest,
   toFixed,
   getKeyByVal,
   getValByVal,
@@ -102,6 +105,8 @@ export {
   curry,
   throttle,
   debounce,
+  handleImgError,
   jsonpAdapter,
-  rem
+  rem,
+  fixMask
 }

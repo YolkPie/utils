@@ -189,3 +189,21 @@ export const lockMaskScroll = (bodyCls => {
     }
   }
 })('dialog-open')
+
+/**
+ * @description 找到某个元素最近的包含指定选择器的父级元素
+ * @param {*} el 元素
+ * @param {*} selector 选择器
+ * @returns 父级元素
+ */
+export const closest = (el, selector) => {
+  const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector
+  while (el) {
+    if (matchesSelector.call(el, selector)) {
+      return el
+    } else {
+      el = el.parentElement
+    }
+  }
+  return null
+}
