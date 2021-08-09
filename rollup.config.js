@@ -5,6 +5,7 @@ import babel from 'rollup-plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 import { version, browser, main, module } from './package.json'
 import replace from 'rollup-plugin-replace'
+import typescript from 'rollup-plugin-typescript2'
 
 const isDev = process.env.NODE_ENV !== 'production'
 const VERSION = process.env.VERSION || version
@@ -19,7 +20,7 @@ const banner =
 export default [
   // browser-friendly UMD build
   {
-    input: 'src/index.js',
+    input: 'src/utils.ts',
     external: ['JSSDK', 'ShareH5'],
     output: {
       banner,
@@ -32,6 +33,7 @@ export default [
       }
     },
     plugins: [
+      typescript({ useTsconfigDeclarationDir: true }),
       replace({
         __VERSION__: VERSION
       }),
@@ -46,19 +48,15 @@ export default [
       !isDev && terser()
     ]
   },
-
-  // CommonJS (for Node) and ES module (for bundlers) build.
-  // (We could have three entries in the configuration array
-  // instead of two, but it's quicker to generate multiple
-  // builds from a single configuration where possible, using
-  // an array for the `output` option, where we can specify
-  // `file` and `format` for each target)
   {
-    input: 'src/index.js',
+    input: 'src/utils.ts',
     external: ['ms', 'JSSDK', 'ShareH5'],
     output: [
       { file: main, format: 'cjs', globals: { JSSDK: 'JSSDK', ShareH5: 'share' } },
       { file: module, format: 'es', globals: { JSSDK: 'JSSDK', ShareH5: 'share' } }
+    ],
+    plugins: [
+      typescript({ useTsconfigDeclarationDir: true })
     ]
   }
 ]
